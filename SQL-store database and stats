@@ -1,0 +1,25 @@
+-- Create store database
+CREATE TABLE store (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, quantity INTEGER, color TEXT);
+
+-- Insert data into database
+INSERT INTO store VALUES
+(1, "tshirt", 15, 298, "pink"),
+(2, 'shorts', 30, 652, 'blue'),
+(3, 'leggings', 25, 456, 'black'),
+(4, 'jeans', 45, 973,'navy'),
+(5, 'socks', 10, 1310, 'striped'),
+(6, 'shorts', 5, 238, 'black'),
+(7, 'blouse', 35, 97, 'red'),
+(8, 'jeggings',50, 234, 'white'),
+(9, 'tanktop', 8, 4251, 'yellow'),
+(10, 'tshirt', 15, 532,'white'),
+(11, 'shirt',20, 132, 'stars'),
+(12, 'onsie', 12, 132, 'blue'),
+(13, 'gymshorts', 25, 123, 'green'),
+(14, 'sportsbra', 23, 132, 'white'),
+(15, 'shoes', 40, 237, 'black');
+
+--display the database ordered by price
+SELECT * FROM store ORDER BY price;
+--How many items are in the store
+SELECT sum(quantity) FROM store
