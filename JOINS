@@ -1,0 +1,50 @@
+/* Create table about the people and what they do here */
+CREATE TABLE moviestars (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    age INTEGER,
+    movie TEXT);
+
+INSERT INTO moviestars (fullname, age, movie)
+VALUES ("Johnny Depp", 54, "Pirattes of the Carrabean"),
+("Robert Downey JR", 45, "Iron Man"),
+("Will Smith", 42, "Hitched"),
+("Megan Fox", 41, "Transformers"),
+("Dawayne Johnson", 61, "Fast and Furious");
+
+CREATE TABLE moviestar_friends (
+    id INTEGER,
+    friend1_id INTEGER,
+    friend2_id INTEGER);
+
+INSERT INTO moviestar_friends (id, friend1_id, friend2_id)
+VALUES (1,4,3), (5, 2, 1), (2, 4, 5);
+
+CREATE TABLE hobbies (persons_id INTEGER, name TEXT);
+
+INSERT INTO hobbies (persons_id, name)
+Values (1, "hiking"), (2, "kick boxing"), (3, "singing"), (4, "shopping"), (5, "running");
+
+CREATE TABLE homes (person_id INTEGER, state TEXT, room_numbers INTEGER, cost INTEGER);
+INSERT INTO homes
+VALUES (1, "California", 7, 3908313), (2, "Colorado", 5, 4923231), (3, "California", 8, 8640281), (4, "Florida", 10, 13429875), (5, "Colorado", 12, 94327123);
+
+-- Join to show fullname next to hobbie
+SELECT fullname, name
+FROM moviestars
+JOIN hobbies
+ON moviestars.id = hobbies.persons_id;
+
+-- Join tabels to show friends names
+SELECT a.fullname, b.fullname AS friend
+FROM moviestar_friends
+JOIN moviestars a
+ON a.id = moviestar_friends.friend1_id
+JOIN moviestars b 
+ON b.id = moviestar_friends.friend2_id;
+
+--Where do actors live?
+SELECT fullname, state
+FROM moviestars
+JOIN homes
+ON moviestars.id = homes.person_id;
